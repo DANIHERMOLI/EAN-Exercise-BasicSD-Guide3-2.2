@@ -78,11 +78,10 @@ public class Main {
                         intChecker = input.hasNextInt();
                         if(intChecker) {
                             int floor = input.nextInt();
+                            newElevator.elevatorUsage(floor);
                             if(newElevator.findIndex(floor) == -1) {
-                                newElevator.elevatorUsage(floor);
                                 System.out.println("You are currently in the floor: " + newElevator.getCurrentFloor());
                             } else {
-                                newElevator.elevatorUsage(floor);
                                 System.out.println("We have arrive to the floor: " + newElevator.getCurrentFloor());
                             }
                             System.out.println();
