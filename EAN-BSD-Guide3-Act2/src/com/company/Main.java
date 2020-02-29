@@ -17,7 +17,6 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 
-        Elevator newElevator = new Elevator();
         boolean exit = false;
         System.out.println();
         System.out.println("#################################");
@@ -25,6 +24,7 @@ public class Main {
         System.out.println("#################################");
         System.out.println("------------Elevator-------------");
         System.out.println();
+        Elevator newElevator = initInstance();
         do {
             int option = menu();
             switch (option) {
@@ -102,6 +102,43 @@ public class Main {
                     break;
             }
         } while (!exit);
+    }
+
+    public static Elevator initInstance() {
+        boolean intChecker;
+        int upFloor;
+        int baseFloor;
+        do {
+            System.out.println("Enter the number of upper floors:");
+            intChecker = input.hasNextInt();
+            if(intChecker) {
+                upFloor = input.nextInt();
+                break;
+            } else {
+                System.out.println("ERROR: Invalid input. Please use Integers");
+                System.out.println();
+            }
+            input.nextLine();
+        } while(true);
+        input.nextLine();
+        do {
+            System.out.println("Enter the number of basements or lower floors:");
+            intChecker = input.hasNextInt();
+            if(intChecker) {
+                baseFloor = input.nextInt();
+                break;
+            } else {
+                System.out.println("ERROR: Invalid input. Please use Integers");
+            }
+            input.nextLine();
+        } while(true);
+        input.nextLine();
+        Elevator newElevator = new Elevator(upFloor, baseFloor);
+        System.out.println();
+        System.out.println("This is the new floor schema: ");
+        System.out.println(Arrays.toString(newElevator.getFloorArray()));
+        System.out.println();
+        return newElevator;
     }
 
     public static int menu() throws InterruptedException {
